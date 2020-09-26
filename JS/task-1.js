@@ -88,7 +88,7 @@ const users = [
 
 //const getUserNames = { name }.map(array => array.name);
 
-const getUserNames = users => users.map(({ name }) => name);
+const getUserNames = array => array.map(({ name }) => name);
 //const getUserNames = ({ name }) => ({ name }.map(({ name }) => name));
 
 //console.log(getUserNames(users));

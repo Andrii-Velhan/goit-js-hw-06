@@ -1,86 +1,102 @@
-class Car {
-  // Write code under this line
-  static getSpecs(car) {
-    return `maxSpeed: ${car.maxSpeed}, speed: ${car.speed}, isOn: ${car.isOn}, distance: ${car.distance}, price: ${car._price}`;
-  }
+const users = [
+  {
+    id: '701b29c3-b35d-4cf1-a5f6-8b12b29a5081',
+    name: 'Moore Hensley',
+    email: 'moorehensley@indexia.com',
+    eyeColor: 'blue',
+    friends: ['Sharron Pace'],
+    isActive: false,
+    balance: 2811,
+    skills: ['ipsum', 'lorem'],
+    gender: 'male',
+    age: 37,
+  },
+  {
+    id: '7a3cbd18-57a1-4534-8e12-1caad921bda1',
+    name: 'Sharlene Bush',
+    email: 'sharlenebush@tubesys.com',
+    eyeColor: 'blue',
+    friends: ['Briana Decker', 'Sharron Pace'],
+    isActive: true,
+    balance: 3821,
+    skills: ['tempor', 'mollit', 'commodo', 'veniam', 'laborum'],
+    gender: 'female',
+    age: 34,
+  },
+  {
+    id: '88beb2f3-e4c2-49f3-a0a0-ecf957a95af3',
+    name: 'Ross Vazquez',
+    email: 'rossvazquez@xinware.com',
+    eyeColor: 'green',
+    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+    isActive: false,
+    balance: 3793,
+    skills: ['nulla', 'anim', 'proident', 'ipsum', 'elit'],
+    gender: 'male',
+    age: 24,
+  },
+  {
+    id: '249b6175-5c30-44c6-b154-f120923736f5',
+    name: 'Elma Head',
+    email: 'elmahead@omatom.com',
+    eyeColor: 'green',
+    friends: ['Goldie Gentry', 'Aisha Tran'],
+    isActive: true,
+    balance: 2278,
+    skills: ['adipisicing', 'irure', 'velit'],
+    gender: 'female',
+    age: 21,
+  },
+  {
+    id: '334f8cb3-eb04-45e6-abf4-4935dd439b70',
+    name: 'Carey Barr',
+    email: 'careybarr@nurali.com',
+    eyeColor: 'blue',
+    friends: ['Jordan Sampson', 'Eddie Strong'],
+    isActive: true,
+    balance: 3951,
+    skills: ['ex', 'culpa', 'nostrud'],
+    gender: 'male',
+    age: 27,
+  },
+  {
+    id: '150b00fb-dd82-427d-9faf-2879ea87c695',
+    name: 'Blackburn Dotson',
+    email: 'blackburndotson@furnigeer.com',
+    eyeColor: 'brown',
+    friends: ['Jacklyn Lucas', 'Linda Chapman'],
+    isActive: false,
+    balance: 1498,
+    skills: ['non', 'amet', 'ipsum'],
+    gender: 'male',
+    age: 38,
+  },
+  {
+    id: 'e1bf46ab-7168-491e-925e-f01e21394812',
+    name: 'Sheree Anthony',
+    email: 'shereeanthony@kog.com',
+    eyeColor: 'brown',
+    friends: ['Goldie Gentry', 'Briana Decker'],
+    isActive: true,
+    balance: 2764,
+    skills: ['lorem', 'veniam', 'culpa'],
+    gender: 'female',
+    age: 39,
+  },
+];
 
-  //   static getSpecs({ maxSpeed, speed, isOn, distance, price }) {
-  //     return `maxSpeed: ${maxSpeed}, speed: ${speed}, isOn: ${isOn}, distance: ${distance}, price: ${price}`;
-  //   }
+// Write code under this line
+const calculateTotalBalance = array =>
+  array.reduce((TotalBalance, { balance }) => TotalBalance + balance, 0);
 
-  constructor({ speed = 0, price, maxSpeed, isOn = false, distance = 0 }) {
-    this.maxSpeed = maxSpeed;
-    this.speed = speed;
-    this.isOn = isOn;
-    this.distance = distance;
-    this._price = price;
-  }
-
-  get price() {
-    return this._price;
-  }
-
-  set price(value) {
-    return (this._price = value);
-  }
-
-  turnOn() {
-    this.isOn = true;
-  }
-
-  turnOff() {
-    (this.isOn = false), (this.speed = 0);
-  }
-
-  accelerate(value) {
-    //speed <= maxSpeed
-    if (this.speed + value > this.maxSpeed) {
-      this.speed = this.maxSpeed;
-    } else this.speed += value;
-  }
-  decelerate(value) {
-    //speed >= 0
-
-    if (this.speed - value <= 0) {
-      this.speed = 0;
-    } else this.speed -= value;
-  }
-  drive(hours) {
-    //this.hours = hours;
-    if ((this.isOn = true)) this.distance += hours * this.speed;
-    return this.distance;
-  }
-}
-
-const mustang = new Car({ maxSpeed: 200, price: 2000 });
-mustang.turnOn();
-mustang.accelerate(50);
-mustang.drive(2);
-
-console.log(Car.getSpecs(mustang));
-// 'maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000'
-
-mustang.decelerate(20);
-mustang.drive(1);
-mustang.turnOff();
-
-console.log(Car.getSpecs(mustang));
-// 'maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 2000'
-
-console.log(mustang.price); // 2000
-mustang.price = 4000;
-console.log(mustang.price); // 4000
+console.log(calculateTotalBalance(users));
+// 20916
 
 /*
-Класс Car JS должен определить как функцию-конструктор
-Ожидается использование метода 'static getSpecs'
-Статический метод 'static getSpecs' должен возвращать строку со свойствами и значениями объекта согласно спецификации.
-Методы get и set для свойства price должны выполняться согласно спецификации.
-Метод 'turnOn' должен задавать свойству 'isOn' значение 'true'.
-Метод 'turnOff' должен задавать свойству 'isOn' значение 'false' и свойству 'speed' значение '0'.
-Метод 'accelerate' должен добавлять к свойству 'speed' значение 'value'
-Метод 'accelerate' должен оставлять свойству 'speed' значение 'maxSpeed', если значение 'value' в сумме со значением 'speed' превышают значение 'maxSpeed'.
-Метод 'decelerate' должен уменьшать свойство 'speed' на значение 'value'
-Метод 'decelerate' должен оставлять свойству 'speed' значение '0', если значение 'value' в сумме со значением 'speed' превышают значение '0'.
-Метод 'drive' должен изменять свойство 'distance', добавляя произведение значений 'hours' и 'speed'
+reduce
+Получи общую сумму баланса (сумму значений свойства balance) всех пользователей.
+
+Используй деструктурирующее присваивание для параметра функции {balance} без пробелов и переносов на новую строку
+
+Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. Т.е. нельзя использовать for, splice, push и т.п. мутирующие методы.
 */
